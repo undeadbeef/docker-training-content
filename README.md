@@ -1,7 +1,9 @@
 # Container Concepts & Security
-This repository is a fork of
-[reveal.js](https://github.com/hakimel/reveal.js)
-to allow easy content distribution without internet access.
+This repository contains the presentation and support content
+for Docker training activities. It leverages
+[reveal.js](https://github.com/hakimel/reveal.js) and Docker,
+and allows self-hosting of the presentation via a Docker
+container built from the repository itself.
 
 ## How to use
 The contents of the presentation is available as a Docker image
