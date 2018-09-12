@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>docker automation training</title>
+
+		<meta name="description" content="Docker training slide deck">
+		<meta name="author" content="ulisses.montenegro@gmail.com">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Containers, Automation &amp; Modern Software Delivery</h2>
+					<h4>An introduction to container usage in modern software pipelines</h4>
+					<p>
+						<small>Created by <a href="mailto:ulisses.albuquerque@purehacking.com">Ulisses Albuquerque</a></small>
+					</p>
+				</section>
+
+				<!-- Agenda s-->
+				<section>
+					<h2>Agenda</h2>
+					<ul>
+						<li>Container concepts</li>
+						<li>Docker and its ecosystem</li>
+						<li>Building and running single image applications</li>
+						<li>Building and running multi-container service stacks</li>
+						<li>Container orchestration</li>
+						<li>Cloud services for image and container management</li>
+						<li>Software delivery via containers</li>
+						<li>Tooling and best practices for container security</li>
+					</ul>
+				</section>
+
+				<!-- Container concepts -->
+				<section>
+					<!-- Container concepts title -->
+					<section>
+						<h2>Container Concepts</h2>
+						<p>What about this container thing, anyway?</p>
+					</section>
+
+					<!-- Container ship analogy -->
+					<section>
+						<img data-src="https://www.cisco.com/c/en/us/solutions/cloud/containers-and-microservices/_jcr_content/Grid/category_atl_ba90/layout-category-atl/anchor_info_8a54/image.img.jpg/1491829940334.jpg"/>
+						<p>Standard external interface means the <span class="fragment highlight-red">container host</span> does not need to acomodate discrepancies</p>
+					</section>
+
+					<!-- Container definition -->
+					<section>
+						<h2>Containers = Bundles</h2>
+						<p>
+							Include everything required by your application in a single artifact and run that instead of
+							requiring installation and configuration of dependencies
+						</p>
+					</section>
+
+					<!-- Container versus virtual machine -->
+					<section>
+						<h2>Containers != VMs</h2>
+						<img data-src="https://blog.netapp.com/wp-content/uploads/2016/03/Screen-Shot-2018-03-20-at-9.24.09-AM-1024x548.png"/>
+					</section>
+
+					<!-- Exposed container resources -->
+					<section>
+						<h2>Exposing Container Resources</h2>
+						<p>
+							<span class="fragment highlight-red">Container resources</span> need to be explicitly mapped to
+							the <span class="fragment highlight-red">container host</span> to allow interaction with
+							container application, including <span class="fragment highlight-red">network ports</span> and
+							<span class="fragment highlight-red">host filesystem resources</span>.
+						</p>
+					</section>
+					
+					<!-- Container ports -->
+					<section>
+						<img data-src="http://composite-framework.readthedocs.io/en/latest/_images/demo_arch_diagram.jpg"/>
+						<p>Port mapping is optional and port numbers on the host are arbitrary</p>
+					</section>
+
+					<!-- Exposed container resources -->
+					<section>
+						<h2>Container Data Persistence</h2>
+						<p>
+							<span class="fragment highlight-red">Container images</span> act as executables, and are
+							immutable. Once executed, they become container instances.
+						</p>
+						<p>
+							<span class="fragment highlight-red">Container instances</span> act as processes, and
+							runtime state is lost once a container is killed. In order to preserve state across
+							multiple executions, <span class="fragment highlight-red">container host filesystem
+							persistence</span> is required.
+						</p>
+					</section>
+
+					<!-- Container data-->
+					<section>
+						<img data-src="https://i2.wp.com/codeblog.dotsandbrackets.com/wp-content/uploads/2017/03/docker-volumes.jpg"/>
+						<p>
+							Host filesystem data can be exposed via <span class="fragment highlight-red">binds</span>,
+							<span class="fragment highlight-red">container volumes</span> and similar mechanisms.
+						</p>
+					</section>
+
+					<!-- Security concerns at conceptual level -->
+					<section>
+						<img width="240px" data-src="https://pbs.twimg.com/profile_images/963099349751336960/2Yt9Eqyj.jpg"/>
+						<p>
+							<span class="fragment highlight-red">Immutability</span> means we cannot patch container
+							images, we must <span class="fragment highlight-red">rebuild</span> them.
+						</p>
+					</section>
+				</section>
+				<!-- /Container concepts -->
+
+				<!-- Docker and its ecosystem -->
+				<section>
+					<!-- Docker and its ecosystem title -->
+					<section>
+						<h2>Docker and its Ecosystem</h2>
+						<p>Understanding the most popular container product</p>
+					</section>
+				</section>
+				<!-- /Docker and its ecosystem -->
+			</section>
+		</div>
+	</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/search/search.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
