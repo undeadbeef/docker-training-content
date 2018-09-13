@@ -43,42 +43,48 @@
 					</p>
 				</section>
 
-				<!-- Agenda s-->
-				<section>
-					<h2>Agenda</h2>
-					<ul>
-						<li>Container concepts</li>
-						<li>Docker and its ecosystem</li>
-						<li>Building and running single image applications</li>
-						<li>Building and running multi-container service stacks</li>
-						<li>Container orchestration</li>
-						<li>Cloud services for image and container management</li>
-						<li>Software delivery via containers</li>
-						<li>Tooling and best practices for container security</li>
-					</ul>
+				<!-- Agenda -->
+				<section data-markdown>
+						<textarea data-template>
+							## Agenda
+							* Container concepts
+							* Docker and its ecosystem
+							* Building and running single image applications
+							* Building and running multi-container service stacks
+							* Container orchestration
+							* Cloud services for image and container management
+							* Software delivery via containers
+							* Tooling and best practices for container security
+					</textarea>
 				</section>
 
 				<!-- Container concepts -->
 				<section>
 					<!-- Container concepts title -->
-					<section>
-						<h2>Container Concepts</h2>
-						<p>What about this container thing, anyway?</p>
+					<section data-markdown>
+							<textarea data-template>
+								## Container Concepts
+								What about this container thing, anyway?
+							</textarea>
 					</section>
 
 					<!-- Container ship analogy -->
 					<section>
 						<img data-src="img/ship-container.jpg"/>
-						<p>Standard external interface means the <span class="fragment highlight-red">container host</span> does not need to acomodate discrepancies</p>
+						<p>
+							Standard external interface means the
+							<span class="fragment highlight-red">container host</span> does not
+							need to acomodate discrepancies
+						</p>
 					</section>
 
 					<!-- Container definition -->
-					<section>
-						<h2>Containers = Bundles</h2>
-						<p>
-							Include everything required by your application in a single artifact and run that instead of
-							requiring installation and configuration of dependencies
-						</p>
+					<section data-markdown>
+							<textarea data-template>
+								## Containers = Bundles
+								Include everything required by your application in a single artifact and run that instead of
+								requiring installation and configuration of dependencies
+							</textarea>
 					</section>
 
 					<!-- Container versus virtual machine -->
@@ -214,6 +220,24 @@ CONTAINER ID  IMAGE         COMMAND                  CREATED        STATUS      
 6598d2739b5c  nginx:alpine  "nginx -g 'daemon of…"   3 seconds ago  Up 2 seconds  80/tcp  elated_pike
 						</code></pre>
 					</section>
+
+					<!-- Docker containers -->
+					<section>
+						<h2>Docker Containers</h2>
+						<p>
+							Containers are running instances of images, and the same image might be executed
+							multiple times with different arguments, just like processes and executables.
+						</p>
+					</section>
+
+					<!-- Docker containers -->
+					<section>
+						<h2>Building Docker Images</h2>
+						<p>
+							Docker images are built using a <tt>Dockerfile</tt>
+						</p>
+					</section>
+				</section>
 				<!-- /Docker and its ecosystem -->
 
 			</section>
