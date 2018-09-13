@@ -68,7 +68,7 @@
 
 					<!-- Container ship analogy -->
 					<section>
-						<img data-src="https://www.cisco.com/c/en/us/solutions/cloud/containers-and-microservices/_jcr_content/Grid/category_atl_ba90/layout-category-atl/anchor_info_8a54/image.img.jpg/1491829940334.jpg"/>
+						<img data-src="img/ship-container.jpg"/>
 						<p>Standard external interface means the <span class="fragment highlight-red">container host</span> does not need to acomodate discrepancies</p>
 					</section>
 
@@ -84,7 +84,7 @@
 					<!-- Container versus virtual machine -->
 					<section>
 						<h2>Containers != VMs</h2>
-						<img data-src="https://blog.netapp.com/wp-content/uploads/2016/03/Screen-Shot-2018-03-20-at-9.24.09-AM-1024x548.png"/>
+						<img data-src="img/vm-container.png"/>
 					</section>
 
 					<!-- Exposed container resources -->
@@ -100,7 +100,7 @@
 					
 					<!-- Container ports -->
 					<section>
-						<img data-src="http://composite-framework.readthedocs.io/en/latest/_images/demo_arch_diagram.jpg"/>
+						<img data-src="img/container-ports.jpg"/>
 						<p>Port mapping is optional and port numbers on the host are arbitrary</p>
 					</section>
 
@@ -121,7 +121,7 @@
 
 					<!-- Container data-->
 					<section>
-						<img data-src="https://i2.wp.com/codeblog.dotsandbrackets.com/wp-content/uploads/2017/03/docker-volumes.jpg"/>
+						<img data-src="img/container-volumes.jpg"/>
 						<p>
 							Host filesystem data can be exposed via <span class="fragment highlight-red">binds</span>,
 							<span class="fragment highlight-red">container volumes</span> and similar mechanisms.
@@ -130,7 +130,7 @@
 
 					<!-- Security concerns at conceptual level -->
 					<section>
-						<img width="240px" data-src="https://pbs.twimg.com/profile_images/963099349751336960/2Yt9Eqyj.jpg"/>
+						<img width="240px" data-src="img/protip-icon.jpg"/>
 						<p>
 							<span class="fragment highlight-red">Immutability</span> means we cannot patch container
 							images, we must <span class="fragment highlight-red">rebuild</span> them.
@@ -146,8 +146,76 @@
 						<h2>Docker and its Ecosystem</h2>
 						<p>Understanding the most popular container product</p>
 					</section>
-				</section>
+
+					<!-- Docker and its ecosystem title -->
+					<section>
+						<h2>Docker Product Line</h2>
+						<ul>
+							<li>Docker Enterprise</li>
+							<li>Docker Desktop</li>
+							<li><span class="fragment highlight-red">Docker Engine</span></li>
+						</ul>
+					</section>
+
+					<!-- Requirements -->
+					<section>
+						<h2>In Practical Terms</h2>
+						<p>
+							Communication with the Docker service is done via the local socket (which can
+							optionally be exposed to the network). The kernel is shared across all container
+							instances.
+						</p>
+						<pre><code>srw-rw---- 1 root docker 0 Sep  4 10:44 /var/run/docker.sock</code></pre>
+					</section>
+
+					<!-- Key concepts -->
+					<section>
+						<h2>Key Concepts</h2>
+						<table>
+							<tr><th>Docker Image</th><td>Executable artifact</td></tr>
+							<tr><th>Docker Container</th><td>Live instance</td></tr>
+							<tr><th>Docker Volume</th><td>Persistent state storage</td></tr>
+							<tr><th>Dockerfile</th><td>Instructions to build image</td></tr>
+							<tr><th>Docker Compose</th><td>Multi-container service map</td></tr>
+						</table>
+					</section>
+
+					<!-- Docker images -->
+					<section>
+						<h2>Docker Images</h2>
+						<p>
+							Represented as layers of data/metadata bundles, not directly accessible via
+							the Docker host filesystem.
+						</p>
+						<pre><code>
+$ docker images
+REPOSITORY            TAG     IMAGE ID      CREATED       SIZE
+docker-training       latest  4d654bc4d666  44 hours ago  30.7MB
+nginx                 alpine  336262580e12  7 days ago    18.6MB
+debian                latest  f2aae6ff5d89  8 days ago    101MB
+quay.io/coreos/clair  latest  f06c9841cdcb  12 days ago   329MB
+btrepp/cntlm          latest  e4eb10ed28f4  13 days ago   99.5MB
+						</code></pre>
+					</section>	
+
+					<!-- Running Docker images -->
+					<section>
+						<h2>Docker Images</h2>
+						<p>
+							Images are meant to be <span class="fragment highlight-red">run</span>, which
+							in turn spawns <span class="fragment highlight-red">containers</span>.
+						</p>
+						<pre><code>
+$ docker run --detach nginx:alpine 
+6598d2739b5c9ce185632dafb2acfdb5d53d502af4657761f027ae3ab39c3063
+
+$ docker ps
+CONTAINER ID  IMAGE         COMMAND                  CREATED        STATUS        PORTS   NAMES
+6598d2739b5c  nginx:alpine  "nginx -g 'daemon of…"   3 seconds ago  Up 2 seconds  80/tcp  elated_pike
+						</code></pre>
+					</section>
 				<!-- /Docker and its ecosystem -->
+
 			</section>
 		</div>
 	</div>
